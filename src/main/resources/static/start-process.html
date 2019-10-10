@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Start process</title>
+
+  <style type="text/css">
+    body {
+      zoom: 5;
+    }
+    img {
+      width: 30%;
+    }
+  </style>
+
+  <script type="text/javascript">
+
+    function startProcessInstance() {
+
+      fetch('http://localhost:8080/rest/process-definition/key/SimpleProcess/start', {
+        method: 'post',
+        headers: {
+          "Content-Type": 'application/json'
+        },
+        body: "{}"
+      }).then(response => {
+        response.json()
+          .then(json => alert(json.message ? json.message : "Success!"));
+      });
+
+    }
+
+  </script>
+</head>
+
+<body>
+
+  <form action="javascript:startProcessInstance();">
+
+    <input type="submit"
+           value="Start 'Simpleprocess'"/>
+
+  </form>
+
+</body>
+
+</html>
